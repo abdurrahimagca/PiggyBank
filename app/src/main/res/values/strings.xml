@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Piggy Bank</string>
+    <string name="balance_info">Güncel Bakiyeniz</string>
+    <string name="welcome">Hoş Geldiniz</string>
+    <string name="repeat_last_action">Son İşlemi Tekrarla</string>
+    <string name="send_money">Para Gönder</string>
+    <string name="atm">Atm İşlemleri</string>
+    <string name="debt">Borç Öde</string>
+    <string name="card_settings">Kart Ayarları</string>
+    <string name="login_text">Giriş Yap</string>
+    <string name="forget_pass">Şifremi Unuttum</string>
+    <string name="iban_info_text">Alıcı IBAN</string>
+    <string name="pay_off_card_debt_info">Ödenmemiş Borcunuz Bulunmamaktadır.</string>
+   <string name="ID_info">TC Kimlik No</string>
+    <string name="card_num_info">Kart Numarası</string>
+    <string name="new_pass">Yeni Şifreniz</string>
+    <string name="card_num_pattern">****-****-****-****</string>
+
+</resources>
