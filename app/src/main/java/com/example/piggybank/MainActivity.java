@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
         Gson gson = new Gson();
         String json = getSharedPreferences("client",MODE_PRIVATE).getString("clientInfo","");
         client = gson.fromJson(json, ClientModel.class);
-        welcomeText.setText(client.getName());
+        welcomeText.setText(client.getName() + " " + client.getSurname());
         SharedPreferences sharedPreferences = getSharedPreferences("balance", MODE_PRIVATE);
         SharedPreferences.Editor sharedPreferencesBalanceEditor = sharedPreferences.edit();
 

@@ -60,7 +60,7 @@
             <TextView
                 android:id="@+id/debt_tv"
                 android:layout_width="wrap_content"
-                android:layout_marginLeft="24"
+                android:layout_marginLeft="24dp"
                 android:layout_height="wrap_content"
                 android:text="@string/pay_off_card_debt_info"
                 style="@style/info_black_text_style"
@@ -82,5 +82,17 @@
         app:layout_constraintHorizontal_bias="0.329"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/pcd_main_back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.909"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/previous" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

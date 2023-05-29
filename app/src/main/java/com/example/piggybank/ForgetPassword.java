@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,8 +17,13 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.regex.Pattern;
+
 public class ForgetPassword extends AppCompatActivity {
     FirebaseFirestore firebaseFirestore;
+    int CVV=0;
+    int newPass=0;
+    String cardNumber = null;
 
 
     @Override
@@ -33,13 +39,24 @@ public class ForgetPassword extends AppCompatActivity {
 
 
 
+
         setPass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 String ID = IDet.getText().toString();
-                int CVV = Integer.parseInt(cvvEt.getText().toString());
-                int newPass = Integer.parseInt(newPassEt.getText().toString());
-                String cardNumber = stringManipulation(cardNum.getText().toString(),4);
+                try{
+                 CVV = Integer.parseInt(cvvEt.getText().toString());
+                newPass = Integer.parseInt(newPassEt.getText().toString());
+                cardNumber = stringManipulation(cardNum.getText().toString(),4);
+                }
+                catch (Exception exception){
+
+                    Toast.makeText(ForgetPassword.this, "Alanlardan biri ya da tamamı boş olamaz!", Toast.LENGTH_SHORT).show();
+
+                }
+
+
 
                 firebaseFirestore = FirebaseFirestore.getInstance();
 
@@ -62,12 +79,20 @@ public class ForgetPassword extends AppCompatActivity {
                                                                             @Override
                                                                             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                                                                                 if(task.isSuccessful()){
-                                                                                    if(!task.getResult().getDocuments().isEmpty())
-                                                                                    {
-                                                                                        task.getResult().getDocuments().get(0).getReference().update("password",newPass);
-                                                                                        Toast.makeText(ForgetPassword.this, "Şifre Güncellendi", Toast.LENGTH_SHORT).show();
-                                                                                        startActivity(new Intent(ForgetPassword.this, Login.class));
-                                                                                        finish();
+                                                                                    if(!task.getResult().getDocuments().isEmpty()) {
+                                                                                        String regex = "^[1-9]\\d{5}$";
+                                                                                        if(!Pattern.matches(regex,newPassEt.getText().toString())){
+                                                                                            Toast.makeText(ForgetPassword.this, "Şifreniz sıfır ile başlamayan 6 haneli rakamlardan oluşmalıdır.", Toast.LENGTH_SHORT).show();
+                                                                                            newPassEt.setText("");
+
+                                                                                        }
+                                                                                        else {
+                                                                                            task.getResult().getDocuments().get(0).getReference().update("password", newPass);
+                                                                                            Toast.makeText(ForgetPassword.this, "Şifre Güncellendi", Toast.LENGTH_SHORT).show();
+                                                                                            startActivity(new Intent(ForgetPassword.this, Login.class));
+                                                                                            finish();
+                                                                                        }
+
                                                                                     }
                                                                                     else
                                                                                     {
@@ -99,10 +124,9 @@ public class ForgetPassword extends AppCompatActivity {
         });
 
     }
+
     public String stringManipulation(String input, int interval) {
         StringBuilder builder = new StringBuilder(input);
-
-
 
 
         int offset = 0;

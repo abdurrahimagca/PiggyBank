@@ -64,9 +64,10 @@ public class ChangePin extends AppCompatActivity {
                                     int databaseCVV = task.getResult().getDocuments().get(0)
                                                     .get("CVV",Integer.class);
                                     if(CVV == databaseCVV){
-                                        //todo: yeni pin sıfırla başlamayan dört haneli pozitif integer patternine uymalı
                                         task.getResult().getDocuments().get(0).getReference()
                                                 .update("pin", Integer.parseInt(newPin.getText().toString()));
+                                        Toast.makeText(ChangePin.this, "Pin güncellendi", Toast.LENGTH_SHORT).show();
+                                        finish();
                                     }
                                     else{
                                         Toast.makeText(ChangePin.this, "Hatalı cvv", Toast.LENGTH_SHORT).show();

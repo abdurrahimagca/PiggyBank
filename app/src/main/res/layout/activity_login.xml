@@ -8,6 +8,7 @@
 
     <EditText
         android:id="@+id/user_id_tv"
+
         android:layout_width="273dp"
         android:layout_height="43dp"
         android:layout_marginStart="69dp"
@@ -18,7 +19,8 @@
         android:ems="10"
 
         android:hint="TC Kimlik Numarası"
-        android:inputType="textPersonName"
+        android:inputType="numberPassword"
+        android:maxLength="11"
         app:layout_constraintBottom_toTopOf="@+id/user_password_tv"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -34,7 +36,8 @@
         android:ems="10"
         android:paddingStart="105dp"
         android:hint="  Şifre"
-        android:inputType="textPassword"
+        android:inputType="numberPassword"
+        android:maxLength="6"
         app:layout_constraintBottom_toTopOf="@+id/login_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.507"

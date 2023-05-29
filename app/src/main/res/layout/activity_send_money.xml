@@ -11,6 +11,17 @@
         layout="@layout/header"
         tools:layout_editor_absoluteX="127dp"
         tools:layout_editor_absoluteY="359dp" />
+    <ImageButton
+        android:id="@+id/sm_main_back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.863"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/previous" />
 
     <EditText
         android:id="@+id/iban_edit_text"

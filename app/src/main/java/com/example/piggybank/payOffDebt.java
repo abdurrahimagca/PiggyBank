@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,6 +33,17 @@ public class payOffDebt extends AppCompatActivity {
         TextView debtTv = findViewById(R.id.credi_debt_tv);
         Button paydebtButton = findViewById(R.id.pay_off_credi);
         EditText amountTv  = findViewById(R.id.amount_credi_debt);
+        ImageButton back  = findViewById(R.id.pd_main_back_button);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(payOffDebt.this, MainActivity.class);
+
+                startActivity(intent);
+                finish();
+            }
+        });
+
 
         FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
         firebaseFirestore.collection("Debt")

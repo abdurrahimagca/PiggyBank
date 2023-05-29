@@ -62,15 +62,24 @@ public class Login extends AppCompatActivity {
                        .get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                    @Override
                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                       ClientModel client = queryDocumentSnapshots.getDocuments().get(0).toObject(ClientModel.class);
-                       if(client.getPassword()==Integer.parseInt(userPass.getText().toString())){
-                           Gson gson = new Gson();
-                           String json = gson.toJson(client);
-                           sharedPreferencesEditor.putString("clientInfo",json);
-                           sharedPreferencesEditor.apply();
-                           startActivity(new Intent(Login.this,MainActivity.class));
-                           finish();
+                       if(!queryDocumentSnapshots.getDocuments().isEmpty()){
+                           ClientModel client = queryDocumentSnapshots.getDocuments().get(0).toObject(ClientModel.class);
+                           if(client.getPassword()==Integer.parseInt(userPass.getText().toString())){
+                               Gson gson = new Gson();
+                               String json = gson.toJson(client);
+                               sharedPreferencesEditor.putString("clientInfo",json);
+                               sharedPreferencesEditor.apply();
+                               startActivity(new Intent(Login.this,MainActivity.class));
+                               finish();
+                           }
+                           else{
+                               Toast.makeText(Login.this, "Parola hatalı!", Toast.LENGTH_SHORT).show();
+                           }
                        }
+                       else{
+                           Toast.makeText(Login.this, "Kullanıcı bulunamadı!", Toast.LENGTH_SHORT).show();
+                       }
+
 
                    }
                });
