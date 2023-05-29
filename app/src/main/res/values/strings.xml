@@ -11,7 +11,7 @@
     <string name="forget_pass">Şifremi Unuttum</string>
     <string name="iban_info_text">Alıcı IBAN</string>
     <string name="pay_off_card_debt_info">Ödenmemiş Borcunuz Bulunmamaktadır.</string>
-   <string name="ID_info">TC Kimlik No</string>
+    <string name="ID_info">TC Kimlik No</string>
     <string name="card_num_info">Kart Numarası</string>
     <string name="new_pass">Yeni Şifreniz</string>
     <string name="card_num_pattern">****-****-****-****</string>

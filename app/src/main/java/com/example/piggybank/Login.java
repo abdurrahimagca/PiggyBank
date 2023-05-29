@@ -31,15 +31,18 @@ public class Login extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_login);
         EditText userID = findViewById(R.id.user_id_tv);
         EditText userPass = findViewById(R.id.user_password_tv);
         Button login = findViewById(R.id.login_button);
+
         SharedPreferences sharedPreferences = getSharedPreferences("client", MODE_PRIVATE);
         SharedPreferences.Editor sharedPreferencesEditor = sharedPreferences.edit();
         FirebaseFirestore loginFirestore = FirebaseFirestore.getInstance();
         CollectionReference clientReference = loginFirestore.collection("Clients");
         TextView forgetPass = findViewById(R.id.forget_pass);
+
         forgetPass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -60,12 +63,13 @@ public class Login extends AppCompatActivity {
                    @Override
                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                        ClientModel client = queryDocumentSnapshots.getDocuments().get(0).toObject(ClientModel.class);
-                       if(client.password==Integer.parseInt(userPass.getText().toString())){
+                       if(client.getPassword()==Integer.parseInt(userPass.getText().toString())){
                            Gson gson = new Gson();
                            String json = gson.toJson(client);
                            sharedPreferencesEditor.putString("clientInfo",json);
                            sharedPreferencesEditor.apply();
                            startActivity(new Intent(Login.this,MainActivity.class));
+                           finish();
                        }
 
                    }

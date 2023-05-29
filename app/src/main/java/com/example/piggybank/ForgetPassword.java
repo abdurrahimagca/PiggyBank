@@ -54,8 +54,34 @@ public class ForgetPassword extends AppCompatActivity {
                                     BankCardModel bankCard = task.getResult().getDocuments().get(0).toObject(BankCardModel.class);
                                     if(cardNumber.equals(bankCard.getCardNum()) && CVV == bankCard.getCVV())
                                     {
-                                        //todo: update passsword at clients field
-                                        startActivity(new Intent(ForgetPassword.this, Login.class));
+
+                                        firebaseFirestore.collection("Clients")
+                                                        .whereEqualTo("ID",ID)
+                                                                .get()
+                                                                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                                                            @Override
+                                                                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                                                                if(task.isSuccessful()){
+                                                                                    if(!task.getResult().getDocuments().isEmpty())
+                                                                                    {
+                                                                                        task.getResult().getDocuments().get(0).getReference().update("password",newPass);
+                                                                                        Toast.makeText(ForgetPassword.this, "Şifre Güncellendi", Toast.LENGTH_SHORT).show();
+                                                                                        startActivity(new Intent(ForgetPassword.this, Login.class));
+                                                                                        finish();
+                                                                                    }
+                                                                                    else
+                                                                                    {
+                                                                                        Toast.makeText(ForgetPassword.this, "Yanlış Kullanıcı", Toast.LENGTH_SHORT).show();
+                                                                                    }
+
+                                                                                }
+                                                                                else
+                                                                                {
+                                                                                    Toast.makeText(ForgetPassword.this, "Bir hata oluştu ERR 76", Toast.LENGTH_SHORT).show();
+                                                                                }
+                                                                            }
+                                                                        });
+
                                     }
                                     else{
                                         Toast.makeText(ForgetPassword.this, "Hatalı Kart Bilgisi!", Toast.LENGTH_SHORT).show();

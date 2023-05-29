@@ -38,5 +38,9 @@
         <item name="android:textSize">18dp</item>
         <item name="android:fontFamily">@font/ubuntu_bold</item>
     </style>
+    <style name="Theme.AppCompat.CustomTheme" parent="Theme.AppCompat.DayNight">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowCloseOnTouchOutside">true</item>
 
+    </style>
 </resources>

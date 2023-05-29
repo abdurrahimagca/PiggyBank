@@ -5,6 +5,12 @@ public class CreditCardModel {
     Integer cardLimit;
     String cardNum;
 
+    public Integer getCardID() {
+        return cardID;
+    }
+
+    Integer cardID;
+
     public String getID() {
         return ID;
     }
