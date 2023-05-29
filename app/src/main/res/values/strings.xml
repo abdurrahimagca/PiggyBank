@@ -15,5 +15,7 @@
     <string name="card_num_info">Kart Numarası</string>
     <string name="new_pass">Yeni Şifreniz</string>
     <string name="card_num_pattern">****-****-****-****</string>
+    <string name="iban_test_text">TR************************</string>
+    <string name="exit">Çıkış Yap</string>
 
 </resources>

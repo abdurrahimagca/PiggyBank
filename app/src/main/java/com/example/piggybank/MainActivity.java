@@ -7,12 +7,17 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -41,6 +46,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
         TextView ibanTV = findViewById(R.id.iban_num_tv);
         TextView balanceTV = findViewById(R.id.balance_tv_main);
         RecyclerView cardRecyclerView = findViewById(R.id.card_rv);
+        Button exit = findViewById(R.id.exit_button);
 
 
         MainRecyclerViewAdapter recyclerViewAdapter = new MainRecyclerViewAdapter(cards,this,this);
@@ -107,6 +113,23 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
 
                 startActivity(new Intent(MainActivity.this, payOffDebt.class));
                 finish();
+            }
+        });
+        ibanTV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ClipboardManager clipboardManager = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+
+                ClipData clip =ClipData.newPlainText("Copied Text", ibanTV.getText().toString());
+                clipboardManager.setPrimaryClip(clip);
+                Toast.makeText(MainActivity.this, "IBAN kopyalandı!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        exit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finishAndRemoveTask();
             }
         });
     }
