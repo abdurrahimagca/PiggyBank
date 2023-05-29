@@ -65,25 +65,25 @@
 
     <TextView
         android:id="@+id/textView3"
+        style="@style/header_2_black_text_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/header_2_black_text_style"
-        android:layout_marginTop="192dp"
+        android:layout_marginTop="188dp"
         android:text="@string/iban_info_text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.167"
+        app:layout_constraintHorizontal_bias="0.197"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView4"
+        style="@style/header_2_black_text_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/header_2_black_text_style"
-        android:layout_marginBottom="400dp"
+        android:layout_marginBottom="396dp"
         android:text="Tutar"
         app:layout_constraintBottom_toBottomOf="@+id/include"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.167"
+        app:layout_constraintHorizontal_bias="0.182"
         app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

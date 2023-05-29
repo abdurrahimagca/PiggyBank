@@ -60,6 +60,7 @@
             <TextView
                 android:id="@+id/debt_tv"
                 android:layout_width="wrap_content"
+                android:layout_marginLeft="24"
                 android:layout_height="wrap_content"
                 android:text="@string/pay_off_card_debt_info"
                 style="@style/info_black_text_style"
